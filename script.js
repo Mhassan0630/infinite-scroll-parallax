@@ -2,22 +2,20 @@
 const lenis = new Lenis({
   duration: 1.2,
   smooth: true,
-  direction: "vertical",
-  gestureDirection: "vertical",
-  smoothTouch: true,
 });
 
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
-
 requestAnimationFrame(raf);
 
-// PARALLAX EFFECT
-gsap.utils.toArray(".hero").forEach((section, i) => {
+// PARALLAX SCALE EFFECT
+gsap.utils.toArray(".section").forEach((section) => {
+  const img = section.querySelector("img");
+
   gsap.fromTo(
-    section.querySelector("img"),
+    img,
     { scale: 1.2 },
     {
       scale: 1,
@@ -30,4 +28,3 @@ gsap.utils.toArray(".hero").forEach((section, i) => {
     }
   );
 });
-
