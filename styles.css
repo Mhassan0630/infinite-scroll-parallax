@@ -2,6 +2,8 @@ body {
   margin: 0;
   background: #000;
   overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #fff;
 }
 
 .wrapper {
@@ -18,6 +20,9 @@ body {
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-container {
@@ -30,4 +35,30 @@ body {
   height: 100%;
   object-fit: cover;
   transform-origin: center;
+  will-change: transform;
+}
+
+/* Performance optimization for animations */
+@media (prefers-reduced-motion: reduce) {
+  .image-container img {
+    will-change: auto;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .section {
+    height: 100vh;
+  }
+  
+  .image-container img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* Accessibility - focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
